@@ -26,3 +26,4 @@ information based upon your set-up.
     XBee <common-telemetry-xbee>
     SiK Radio — Advanced Configuration <common-3dr-radio-advanced-configuration-and-technical-information>
     3DR Radio v1 <common-3dr-radio-v1>
+    Cellular Data <common-cellular-data>
