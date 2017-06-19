@@ -9,11 +9,11 @@ MAVLink2 extends MAVLink1 in two important ways:
 - increases the namespace available for messages
 - allows MAVLink packets to be cryptographically signed to defend against Man-in-the-Middle attacks
 
-This document explains show to enable mavlink2 and how to enable packet signing.
+This document explains how to enable mavlink2 and how to enable packet signing.
 
 .. warning::
 
-   Consider having multiple links to your available during setup.  You may lock yourself out of the vehicle accidentally!
+   Consider having multiple links to your vehicle available during setup.  You may lock yourself out of the vehicle accidentally!
 
 Enabling MAVLink2
 =================
