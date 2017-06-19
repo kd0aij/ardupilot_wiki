@@ -40,7 +40,7 @@ MAVLink1, MAVLink2 and Stream Rates
 
 For telemetry ports used for MAVLink communication you may select to use MAVLink1 by setting the ``SERIALx_PROTOCOL`` to "1" or MAVLink2 by setting ``SERIALx_PROTOCOL`` to "2".
 
-MAVLink2 supports "signing" of packets which improves security and flexible length messages so it should be used when possible but some older telemetry radios do not understand MAVLink2 so the default is MAVLink1.
+:ref:`MAVLink2 <common-mavlink2>` supports "signing" of packets which improves security and flexible length messages so it should be used when possible but some older telemetry radios do not understand MAVLink2 so the default is MAVLink1.
 
 As mentioned on the :ref:`Telemetry Logs page <common-mission-planner-telemetry-logs>` the rate messages are sent from the vehicle can be controlled using the ``SRx_*`` parameters (i.e. :ref:`SR1_POSITION <SR1_POSITION>`).
 
