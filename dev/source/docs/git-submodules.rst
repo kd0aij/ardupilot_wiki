@@ -23,7 +23,7 @@ Submodule approach
 ArduPilot uses a single level of *git submodules*, with all modules stored in the `modules <https://github.com/ArduPilot/ardupilot/tree/master/modules>`__
 directory. This approach was chosen as it makes for diagnosis of issues with submodules simpler.  This means that if an external project (i.e. PX4Firmware) has submodules of its own, those submodule appear directly in the `ArduPilot modules directory <https://github.com/ArduPilot/ardupilot/tree/master/modules>`__.
 
-ArduPilot maintains local forks of each external project's repo in order to shielf itself from unexpected changes.
+ArduPilot maintains local forks of each external project's repo in order to shield itself from unexpected changes.
 
 You may also note that the URLs used for the submodules use the old
 ``git://`` protocol. This was done to make it less likely we will get
@@ -65,7 +65,7 @@ That happens because you have previously built with an external
 PX4Firmware and PX4NuttX tree, and you need to convert to using
 submodules. The simplest way to fix this is to remove your **config.mk**
 file as it is no longer needed. If you want to keep the file for some
-reason then you can either comment out or removed the lines in
+reason then you can either comment out or remove the lines in
 **config.mk** which specify the ``PX4_ROOT``, ``NUTTX_SRC`` and
 ``UAVCAN_DIR`` variables.
 
@@ -89,7 +89,7 @@ Disaster recovery
 -----------------
 
 If things have gone very badly wrong with your git tree the simplest
-thing to do it to remove the modules/ directory completely from your local repo and run these commands
+thing to do is to remove the modules/ directory completely from your local repo and run these commands
 to reinitialise and update the submodules:
 
 ::
