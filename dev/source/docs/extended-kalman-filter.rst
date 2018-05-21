@@ -39,11 +39,10 @@ available measurements it is better able to reject measurements with
 significant errors so that the vehicle becomes less susceptible to
 faults that affect a single sensor.
 
-Another feature of the EKF algorithm is that it is able to estimate
-offsets in the vehicles compas readings and also estimate the earth's
-magnetic field for both plane, copter and rover applications. This makes
-it less sensitive to compass calibration errors than current DCM and
-INAV algorithms.
+Another feature of the EKF algorithm is that it is able to estimate offsets in the vehicle's compass readings
+hence improving measurement accuracy of the earth magnetic field vector
+for all compass-equipped vehicles. This makes it less sensitive to compass calibration errors 
+than current DCM and INAV algorithms.
 
 It also enables measurements from optional sensors such as optical flow
 and laser range finders to be used to assist navigation.
@@ -51,7 +50,7 @@ and laser range finders to be used to assist navigation.
 Theory
 ======
 
-The EKF (Extended Kalman Filter) algorithm implemented, estimates a
+This EKF (Extended Kalman Filter) algorithm estimates a
 total of 22 states with the underlying equations derived using the
 following:
 https://github.com/priseborough/InertialNav/blob/master/derivations/GenerateEquations22states.m
@@ -61,22 +60,22 @@ how the filter works:
 
 #. IMU angular rates are integrated to calculate the angular position
 #. IMU accelerations are converted using the angular position from body
-   X,Y,Z to earth North,East and Down axes and corrected for gravity
-#. Accelerations are integrated to calculate the velocity
-#. Velocity is integrated to calculate the position
+   X,Y,Z to Earth North,East and Down axes and corrected for gravity
+#. Accelerations are integrated to estimate the velocity
+#. Velocity is integrated to estimate the position
 
    This process from 1) to 4) is referred to as 'State Prediction'. A
-   'state' is a variables we are trying to estimate like roll,pitch yaw,
+   'state' is a variable we are trying to estimate like roll,pitch yaw,
    height, wind speed, etc. The filter has other states besides
    position, velocity and angles that are assumed to change slowly.
    These include gyro biases, Z accelerometer bias, wind velocities,
    compass biases and the earth's magnetic field. These other states
    aren't modified directly by the 'State Prediction' step but can be
-   modified by measurements a described later.
+   modified by measurements as described later.
 #. Estimated gyro and accelerometer noise (``EKF_GYRO_NOISE``
    and ``EKF_ACC_NOISE``) are used to estimate the growth in error in
    the angles, velocities and position calculated using IMU data. Making
-   these parameters larger causes the filters error estimate to grow
+   these parameters larger causes the filter's error estimate to grow
    faster. If no corrections are made using other measurements (eg GPS),
    this error estimate will continue to grow. These estimated errors are
    captured in a large matrix called the 'State Covariance Matrix'.
