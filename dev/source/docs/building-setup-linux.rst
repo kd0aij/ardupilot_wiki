@@ -25,6 +25,16 @@ Clone ArduPilot repository
     :start-after: inclusion-marker-do-not-remove
     :end-before: Cloning with the GitHub GUI (Windows or MAC)
 
+
+.. note:: in case some firewalls do not allow ssh access which can cause the above submodule updates to fail, in this instance you can tell git to unilaterally use https through the following command:
+
+    ::
+
+         git config --global url."https://" 
+
+    to use https protocols instead of the default git:// prefix.
+
+
 Install some required packages
 ------------------------------
 
@@ -40,6 +50,8 @@ Reload the path (log-out and log-in to make permanent):
     . ~/.profile
 
 Now you should be able to build with waf as described in `BUILD.md <https://github.com/ArduPilot/ardupilot/blob/master/BUILD.md>`__.
+
+.. note:: At this point you have already installed the MAVProxy Ground Control Station (MAVProxy GCS) and are also ready to do Software In the Loop (SITL) simulations of the vehicle code. See :ref:`sitl-simulator-software-in-the-loop`  and :ref:`setting-up-sitl-on-linux` . You are ready to not only build the code, but run your build in the Ardupilot SITL simulator.
 
 Add some directories to your search path (Facultative)
 ------------------------------------------------------

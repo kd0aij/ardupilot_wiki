@@ -18,15 +18,18 @@ tuning options for the vehicle.
     Baro Temperature Compensation <common-baro-temp-comp>
     Boat mode <boat-mode>
 [/site]
+    Bootloader Update <common-bootloader-update>
 [site wiki="rover"]
     Autopilot Output Mapping <common-rcoutput-mapping>
     Auxiliary Functions <common-auxiliary-functions>
     Boats with Vectored Thrust <rover-vectored-thrust>
+    Bootloader Update <common-bootloader-update>
 [/site]
 [site wiki="plane"]
     Advanced Failsafe <advanced-failsafe-configuration>
     Autopilot Output Mapping <common-rcoutput-mapping>
     Auxiliary Functions <common-auxiliary-functions>
+    Bootloader Update <common-bootloader-update>
 [/site]
     CAN Bus Setup <common-canbus-setup-advanced>
     Compass Setup (Advanced) <common-compass-setup-advanced>
@@ -36,6 +39,7 @@ tuning options for the vehicle.
 [site wiki="plane"]
     Crash Detection <crash-detect>
 [/site]
+    Brushless ESCs <common-dshot>
     Extended Kalman Filter (EKF) <common-apm-navigation-extended-kalman-filter-overview>
 [site wiki="copter,plane,rover"]
     Flight Time Recorder <common-flight-time-recorder>
@@ -43,6 +47,7 @@ tuning options for the vehicle.
 [site wiki="plane"]
     Fly-By-Wire Low Altitude Limit <fly-by-wire-low-altitude-limit>
 [/site]
+    FPort Setup <common-FPort-receivers>
     GPIOs <common-gpios>
     Ground Control Station Only Operation <common-gcs-only-operation>
 [site wiki="copter"]
@@ -63,6 +68,7 @@ tuning options for the vehicle.
 [site wiki="copter,rover"]
     Non-GPS Navigation <common-non-gps-navigation-landing-page>
 [/site]
+    Notification Devices (LEDs,Buzzer,etc.) <common-ntf-devices>
 [site wiki="copter,plane"]
     Notch Filter Configuration <common-imu-notch-filtering>
 [/site]
@@ -82,6 +88,9 @@ tuning options for the vehicle.
     Terrain Following (Non-Autonomous modes) <terrain-following-manual-modes>
     Tuning <common-tuning>
 [/site]
+[site wiki="plane"]
+    Transmitter Based Tuning <common-transmitter-tuning>
+[/site]
     UAVCAN Setup <common-uavcan-setup-advanced>
 [site wiki="copter,plane,rover,planner"]
     UBlox GPS Configuration <common-ublox-gps>
@@ -89,6 +98,4 @@ tuning options for the vehicle.
 [site wiki="plane,planner,rover"]
     Vibration Damping <common-vibration-damping>
 [/site]
-[site wiki="plane"]
-    Transmitter Based Tuning <common-transmitter-tuning>
-[/site]
+

@@ -6,6 +6,10 @@ Radio Failsafe
 
 Copter supports several configurable failsafe options in cases where contact between the Pilot's RC transmitter and the autopilot's receiver is lost.  This page explains this failsafe's setup and testing.  Note the "Radio failsafe" was previously called "Throttle failsafe" because of the way in which some receivers use the throttle channel to signal the loss of contact.
 
+.. warning::
+
+   For Single Helicopter, Dual Helicopter and Quad Helicopter frames, Copter 3.6 and earlier in any :ref:`H_RSC Mode<H_RSC_MODE>` or Copter 4.0 in the RC Passthrough :ref:`H_RSC_Mode<H_RSC_MODE>` requires the RC receiver channel 8 to hold last value when transmitter signal is lost.  If the receiver sends no signal or does not hold the RC channel 8 value, the motor will be shutdown and the helicopter will crash.  
+
 .. image:: ../images/RadioFailsafe_Intro.jpg
     :target: ../_images/RadioFailsafe_Intro.jpg
 
@@ -78,7 +82,7 @@ The :ref:`FS_THR_VALUE<FS_THR_VALUE>`  parameter can be set in the Mission Plann
 -  At least 10 PWM lower than your channel 3's PWM value when the throttle stick is fully down and the transmitter is **on**
 -  Above 910 PWM
 
-The :ref:`FS_OPTIONS<FS_OPTIONS>`  parameter (Copter 4.0 and later) is a bitmask parameter to select one or more options that modify the standard actions of the radio, GCS, and battery failsafe. In the Mission Planner full parameter list or full parameter tree, the handy checkbox popup window is an easy what to set this (and any other bitmask) parameter. Be sure to go to Help > Check Beta Updates to pull the latest parameter definitions first while connected to the internet. The FS_OPTIONS bits are as follows:
+The :ref:`FS_OPTIONS<FS_OPTIONS>`  parameter (Copter 4.0 and later) is a bitmask parameter to select one or more options that modify the standard actions of the radio, GCS, and battery failsafe. In the Mission Planner full parameter list or full parameter tree, the handy checkbox popup window is an easy what to set this (and any other bitmask) parameter. Be sure to go to Help > Check Beta Updates to pull the latest parameter definitions first while connected to the internet. The :ref:`FS_OPTIONS<FS_OPTIONS>` bits are as follows:
 
 - bit 0 set: Continue if in auto mode on :ref:`Radio Failsafe <radio-failsafe>`
 - bit 1 set: Continue if in auto mode on :ref:`Ground Control Station Failsafe<gcs-failsafe>`

@@ -15,7 +15,7 @@ There are many different kinds of rangefinders: Lidar (using laser or infra-red 
    :ref:`common-object-avoidance-landing-page` features are new and should be used with caution.
    
 
-Up to 10 Rangefinders can be used in the system. :ref:`Object Avoidance <common-object-avoidance-landing-page>` can use a single 360 degree Lidar, or up to 9 unidirectional rangefinders: 8 arranged in a circle covering 45 degree wide segments, plus an upward facing rangefinder. And a downward facing rangefinder used for low altitude height above ground measurements.
+Up to 10 Rangefinders can be used in the system (1 thru A). :ref:`Object Avoidance <common-object-avoidance-landing-page>` can use a single 360 degree Lidar, or up to 9 unidirectional rangefinders: 8 arranged in a circle covering 45 degree wide segments, plus an upward facing rangefinder. And a downward facing rangefinder used for low altitude height above ground measurements.
 
 Connecting and Configuring the Rangefinder
 ==========================================
@@ -27,7 +27,7 @@ Connecting and Configuring the Rangefinder
   - Exclusion zones are provided for 360 degree Lidars, since these may have obstructions in their field of view. Exclusion zones are set via the PRX_IGN_ANGx and PRX_IGN_WIDx parameters, specifying a direction and width the frame obstruction presents and will be ignored. Up to 6 exclusion sectors can be specified.
   - If a rangefinder is oriented facing up, then it will be used in the :ref:`common-simple-object-avoidance` operation as an upwards sensing proximity sensor in Copter LOITER, ALTHOLD, and POSHOLD modes.
 [/site]
-  - If a rangefinder is oriented facing down, it will automatically be used to for height above ground measurements when within its range for increased landing precision in Copter and Plane autolandings. In Copter, when landing and within 10m of the ground according to the range finder, the vehicle will slow it's descent to the LAND_SPEED (which defaults to 50cm/s). In Plane, see the "using a rangefinder" section of :ref:`automatic-landing`
+  - If a rangefinder is oriented facing down, it will automatically be used to for height above ground measurements when within its range for increased landing precision in Copter and Plane autolandings. In Copter, when landing and within 10m of the ground according to the range finder, the vehicle will slow it's descent to the :ref:`LAND_SPEED<LAND_SPEED>` (which defaults to 50cm/s). In Plane, see the "using a rangefinder" section of :ref:`automatic-landing`
 
 
 .. note:: Only downward facing rangefinders are supported in Plane currently.

@@ -31,8 +31,29 @@
 # Vagrant
 /.vagrant
 
+# Parameters multiversioning
+/copter/source/docs/parameters-Copter-*.rst
+/plane/source/docs/parameters-Plane-*.rst
+/rover/source/docs/parameters-Rover-*.rst
+/antennatracker/source/docs/parameters-AntennaTracker-*.rst
+/copter/source/docs/parameters-latest.rst
+/plane/source/docs/parameters-latest.rst
+/rover/source/docs/parameters-latest.rst
+/antennatracker/source/docs/parameters-latest.rst
+/copter/source/_static/parameters-Copter.json
+/plane/source/_static/parameters-Plane.json
+/rover/source/_static/parameters-Rover.json
+/antennatracker/source/_static/parameters-Antennatracker.json
+
+
 # Parameters files
 /copter/source/docs/parameters.rst
 /plane/source/docs/parameters.rst
 /rover/source/docs/parameters.rst
 /antennatracker/source/docs/parameters.rst
+
+# Log messages files
+/copter/source/docs/logmessages.rst
+/plane/source/docs/logmessages.rst
+/rover/source/docs/logmessages.rst
+/antennatracker/source/docs/logmessages.rst

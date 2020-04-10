@@ -78,13 +78,13 @@ to set the following parameters to enable support for FrSky S.PORT. It
 has built-in inverters and a diode to allow for operation from a single
 pin with no special adapters.
 
-  - SERIAL2_PROTOCOL 4 or 10
-  - SERIAL2_OPTIONS 0
+  - :ref:`SERIAL2_PROTOCOL<SERIAL2_PROTOCOL>` 4 or 10
+  - :ref:`SERIAL2_OPTIONS<SERIAL2_OPTIONS>` 0
 
 OSD Support
 ===========
 
-The KakuteF4 supports OSD using OSD_TYPE 1 (MAX7456 driver).
+The KakuteF4 supports OSD using :ref:`OSD_TYPE<OSD_TYPE>` 1 (MAX7456 driver).
 
 PWM Output
 ==========
@@ -111,11 +111,11 @@ sensor can handle up to 6S LiPo batteries.
 
 The correct battery setting parameters are:
 
- - BATT_MONITOR 4
- - BATT_VOLT_PIN 13
- - BATT_CURR_PIN 12
- - BATT_VOLT_MULT 10.1
- - BATT_AMP_PERVLT 17.0
+ - :ref:`BATT_MONITOR<BATT_MONITOR>` 4
+ - :ref:`BATT_VOLT_PIN<BATT_VOLT_PIN>` 13
+ - :ref:`BATT_CURR_PIN<BATT_CURR_PIN>` 12
+ - :ref:`BATT_VOLT_MULT<BATT_VOLT_MULT>` 10.1
+ - :ref:`BATT_AMP_PERVLT<BATT_AMP_PERVLT>` 17.0
 
 Compass
 =======

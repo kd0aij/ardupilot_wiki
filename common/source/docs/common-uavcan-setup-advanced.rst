@@ -22,8 +22,6 @@ parameter needs to be set for basic setup.
 
 Detailed description of protocol can be found at https://uavcan.org/
 
-**UAVCAN driver for Aurdupilot do not support auto node numbering in
-current version. All nodes should have the ID explicitly set.**
 
 UAVCAN Peripheral Types Supported
 =================================
@@ -89,4 +87,30 @@ The **TYPE** parameter should be set to 9 for corresponding GNSS receiver in aut
 
 .. image:: ../../../images/uavcan-gnss-settings.png
     :target: ../_images/uavcan-gnss-settings.png
+
+
+UAVCAN LED configuration
+========================
+
+UAVCAN LEDs are enabled by setting bit 5 in the :ref:`NTF_LED_TYPES<NTF_LED_TYPES>` bitmask.
+
+UAVCAN Rangefinder configuration
+================================
+
+Set ``RNGFNDx_TYPE`` = 24 to enable UAVCAN rangefinder type. Rangefinder data received over UAVCAN will only be used if the received sensor_id matches the parameter ``RNGFNDx_ADDR``. For AP_Periph firmware based adaptor nodes, this value is 0, so ``RNGFNDx_ADDR`` must be set to 0. Other UAVCAN rangefinders may differ. See also :ref:`UAVCAN Adaptor Node<common-uavcan-adapter-node>` instructions.
+
+
+SLCAN
+=====
+
+Ardupilot and UAVCAN provides a means to directly communicate with UAVCAN devices on the CAN BUS attached to the autopilot: SLCAN. Enabling SLCAN and communicating with the UAVCAN devices is dependent on the autopilot's processor. F7/H7 processors use one method and F4, a different method.
+
+.. toctree::
+    :maxdepth: 1
+
+    SLCAN Access on F4 Based Autopilots <common-slcan-f4>
+    SLCAN Access on F7/H7 Based Autopilots <common-slcan-f7h7>
+    Mission Planner SLCAN <common-mp-slcan>
+    UAVCAN GUI <common-uavcan-gui>
+
 

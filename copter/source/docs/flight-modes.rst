@@ -10,7 +10,7 @@ for Copter.
 Overview
 ========
 
-Copter has 22 flight built-in flight modes, 10 of which are regularly
+Copter has 23 flight built-in flight modes, 10 of which are regularly
 used. There are modes to support different levels/types of flight
 stabilization, a sophisticated autopilot, a follow-me system etc.
 
@@ -34,6 +34,7 @@ companion computer.
    <tr><td>FlowHold</td><td>s</td><td>A</td><td></td><td>Position control using Optical Flow</td></tr>
    <tr><td>Follow</td><td>s</td><td>A</td><td>Y</td><td>Follows another vehicle</td></tr>
    <tr><td>Guided</td><td>A</td><td>A</td><td>Y</td><td>Navigates to single points commanded by GCS</td></tr>
+    <tr><td>Heli_Autorotate</td><td>A</td><td>A</td><td>Y</td><td>Used for emergencies in traditional helicopters. Helicopter only.  Currently SITL only.</td></tr>
    <tr><td>Land</td><td>A</td><td>s</td><td>(Y)</td><td>Reduces altitude to ground level, attempts to go straight down</td></tr>
    <tr><td>Loiter</td><td>s</td><td>s</td><td>Y</td><td>Holds altitude and position, uses GPS for movements</td></tr>
    <tr><td>PosHold</td><td>s</td><td>+</td><td>Y</td><td>Like loiter, but manual roll and pitch when sticks not centered</td></tr>
@@ -77,6 +78,7 @@ Additional flight modes:
 
 -  :ref:`Acro <acro-mode>`
 -  :ref:`AirMode <airmode>`
+-  :ref:`Heli_Autorotate <traditional-helicopter-autorotation-mode>` for traditional helicopters only.
 -  :ref:`AutoTune <autotune>`
 -  :ref:`Brake <brake-mode>`
 -  :ref:`Circle <circle-mode>`
@@ -111,6 +113,7 @@ of GPS dependency for Copter flight modes.
 Requires GPS lock prior to takeoff:
 
 -  :ref:`Auto <auto-mode>`
+-  :ref:`Heli_Autorotate <traditional-helicopter-autorotation-mode>`
 -  :ref:`Circle <circle-mode>`
 -  :ref:`Drift <drift-mode>`
 -  :ref:`Follow <follow-mode>`
@@ -151,6 +154,7 @@ Full list of flight modes
     Follow <follow-mode>
     Follow Me (GSC Enabled) <ac2_followme>
     Guided <ac2_guidedmode>
+    Heli_Autorotate <traditional-helicopter-autorotation-mode>
     Land <land-mode>
     Loiter <loiter-mode>
     PosHold <poshold-mode>

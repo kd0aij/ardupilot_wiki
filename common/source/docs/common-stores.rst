@@ -12,6 +12,7 @@ recommended for use with ArduPilot (in alphabetical order).  You may also want t
 * `Air-Supply Aerial <https://www.airsupplyaerial.net/equipment>`__
 * `AltiGator <http://www.altigator.com/>`__
 * `Bask Aerospace <https://baskaerospace.com.au/>`__
+* `Benewake <https://benewake.en.alibaba.com/?spm=a2700.icbuShop.88.19.66976e38pCbzVV>`__
 * `BlueRobotics <https://www.bluerobotics.com/store/>`__
 * `Craft & Theory <http://www.craftandtheoryllc.com/store/>`__ (FrSky telemetry, MAUCH power modules)
 * `CUAV <https://store.cuav.net/>`__
@@ -34,6 +35,7 @@ recommended for use with ArduPilot (in alphabetical order).  You may also want t
 * `Skeyetech <http://www.skeyetech-shop.fr/>`__
 * `UnmannedTech UK <https://www.unmannedtechshop.co.uk/>`__
 * `uAvionix <https://uavionix.com/>`__
+* `UAV Systems International <https://uavsystemsinternational.com/collections/all>`__
 * `VirtualRobotix <http://www.virtualrobotix.it/index.php/en/shop>`__
 * `3DXR <https://www.3dxr.co.uk/>`__
 

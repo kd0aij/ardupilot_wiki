@@ -27,6 +27,7 @@ RC input
 --------
 
 Radio Control Receivers are normally used for pilot control. While exclusive pilot control via ground stations using telemetry is possible, it is not recommended.
+(However, it is possible to control the vehicle via ground station software using a joystick. See :ref:`Joysticks <common-joystick>` .
 
 .. image:: ../../../images/rx-connection.jpg
   :width: 450px
@@ -35,6 +36,7 @@ Ardupilot autodetects the following serial RC receiver protocols:
 
    #. PPM remote control (R/C) receivers
    #. SBus receivers
+   #. FPort receivers
    #. Spektrum DSM and DSM2 receivers
    #. Spektrum DSM-X Satellite receivers
    #. IBUS receivers
@@ -43,7 +45,7 @@ Ardupilot autodetects the following serial RC receiver protocols:
 For traditional single-wire-per-channel (PWM) receivers a PPM encoder
 can be used to convert the receiver outputs to PPM-SUM. 
 
-.. tip:: As of Ardupilot 4.0 versions of firmware, any autopilot UART may be used as an input for an RC receiver, instead of the designated RCIN pin, by setting that port's ``SERIALx_PROTOCOL`` to 23. However, some serial protocols require inversion (SBUS) and the UART must be capable of using the ``SERIALx_OPTIONS`` parameter to invert the RX input, otherwise, an external inverter will be required. This also allows a second RC receiver to be attached to the autopilot for redundancy. If the first receiver (first detected valid after boot) fails, then the second will be used. Note that whatever RC input ranges and trims were calibrated will be used for the second when it becomes active. Both receivers MUST be set to send no pulses in failsafe for this to work properly.
+.. tip:: As of Ardupilot 4.0 versions of firmware, any autopilot UART may be used as an input for an RC receiver, instead of the designated RCin or SBUS input pin, by setting that port's ``SERIALx_PROTOCOL`` to 23. However, some serial protocols require inversion (SBUS) and the UART must be capable of using the ``SERIALx_OPTIONS`` parameter to invert the RX input, otherwise, an external inverter will be required. This also allows a second RC receiver to be attached to the autopilot for redundancy. If the first receiver (first detected valid after boot) fails, then the second will be used. Note that whatever RC input ranges and trims were calibrated will be used for the second when it becomes active. Both receivers MUST be set to send no pulses in failsafe for this to work properly.
 
 .. tip::
 
@@ -87,10 +89,10 @@ For Copter see :ref:`Connect ESCs and Motors <copter:connect-escs-and-motors>`.
 In overview, for copters connect each signal wire from the PDB to the
 main output signal (S) pins by motor number:
 
--  Pin 1 = Motor 1 - - Pin 5 = Motor 5
--  Pin 2 = Motor 2 - - Pin 6 = Motor 6
--  Pin 3 = Motor 3 - - Pin 7 = Motor 7
--  Pin 4 = Motor 4 - - Pin 8 = Motor 8
+-  Output 1 = Motor 1 - - Output 5 = Motor 5
+-  Output 2 = Motor 2 - - Output 6 = Motor 6
+-  Output 3 = Motor 3 - - Output 7 = Motor 7
+-  Output 4 = Motor 4 - - Output 8 = Motor 8
 
 [/site]
 
@@ -98,21 +100,21 @@ main output signal (S) pins by motor number:
 For planes connect the control channel wires to the main output signal
 pins:
 
--  Pin 1 = Aileron
--  Pin 2 = Elevator
--  Pin 3 = Throttle
--  Pin 4 = Rudder
+-  Output 1 = Aileron
+-  Output 2 = Elevator
+-  Output 3 = Throttle
+-  Output 4 = Rudder
 
 [/site]
 
 [site wiki="rover"]
 For Rovers connect the throttle and steering wires to the main output
-signal pins:
+signal pins. The default settings are:
 
--  Pin 3 = Throttle
--  Pin 1 = Steering
+-  Output 3 = Throttle
+-  Output 1 = Steering
 
-The skid-steer parameters are used to configure vehicles that have fixed wheels and steer like tank tracks (do not use servos to steer the wheels but rather use differential speed between the left and right wheels). The parameters are: SKID_STEER_OUT and SKID_STEER_IN. When enabled, autopilot's output RC1 is used for the left track control, and output RC3 is used for right track control.
+The skid-steer output function parameters are used to configure vehicles that have fixed wheels and steer like tank tracks (ie. do not use servos to steer the wheels but rather use differential speed between the left and right wheels). The SERVOx_FUNCTION for the outputs used for each side's motor are set using the ``Throttle Left`` and ``Throttle Right`` output functions. See :ref:`Rover Motor Functions <rover-motor-and-servo-configuration>` 
 [/site]
 
 Connect buzzer and safety switch

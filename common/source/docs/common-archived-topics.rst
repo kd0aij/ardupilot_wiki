@@ -52,6 +52,9 @@ value to users with old hardware.
     [/site]
 [site wiki="rover"]
     Pre-4.0 Rover Avoidance <rover-object-avoidance>
+    Sonar Sensors <sonar-sensors>
+    Tuning Steering and Navigation (ver 3.1 and older) <tuning-steering-and-navigation-for-a-rover>
+    Tuning Waypoint Turn Speed (ver 3.1 and older) <speed-turn-parameter-tuning>
 [/site]
 
 [site wiki="plane"]
@@ -82,6 +85,9 @@ value to users with old hardware.
     Building for Erle-Brain 2 <building-for-erle-brain-2>
     Building for Erle-Brain <building-for-erle-brain>
     Building for Navio on RPI 2<building-for-navio-on-rpi2>
+    Intel Edison <intel-edison>
+    BeaglePilot Project <beaglepilot>
+    Making a Mavlink WiFi bridge using the Raspberry Pi <making-a-mavlink-wifi-bridge-using-the-raspberry-pi>
 
 [/site]
 

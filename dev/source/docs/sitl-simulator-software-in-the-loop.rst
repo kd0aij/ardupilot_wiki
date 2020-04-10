@@ -47,8 +47,8 @@ Running SITL
 ============
 
 The ArduPilot SITL environment has been developed to run natively on both
-Linux and Windows. For instructions see :ref:`Setting up SITL on Linux <setting-up-sitl-on-linux>` and :ref:`Setting up SITL on Windows <sitl-native-on-windows>`
-for more information.
+Linux and Windows. For setup instructions see :ref:`Setting Up SITL <SITL-setup-landingpage>`
+for more information. Using SITL is explained in :ref:`Using SITL <using-sitl-for-ardupilot-testing>`. For examples of starting and using SITL for a particular vehicle see :ref:`sitl-examples` . 
 
 SITL Architecture
 =================
@@ -64,18 +64,6 @@ port numbers depending on your environment.
 .. toctree::
     :maxdepth: 1
 
-    SITL setup on Linux <setting-up-sitl-on-linux>
-    SITL setup on Windows <sitl-native-on-windows>
-    SITL setup on Windows in a VM <setting-up-sitl-on-windows>
-    SITL setup using Vagrant <setting-up-sitl-using-vagrant>
-    Copter SITL/MAVProxy Tutorial <copter-sitl-mavproxy-tutorial>
-    Plane SITL/MAVProxy Tutorial <plane-sitlmavproxy-tutorial>
-    Rover SITL/MAVProxy Tutorial <rover-sitlmavproxy-tutorial>
-    Balance Bot SITL/MAVProxy Tutorial <balance_bot-sitl-mavproxy-tutorial>
-    SITL Advanced Testing <using-sitl-for-ardupilot-testing>
-    Using Gazebo Simulator with SITL <using-gazebo-simulator-with-sitl>
-    Using Last_letter Simulator with SITL <using-last_letter-as-an-external-sitl-simulator>
-    Using the CRRCSim simulator <simulation-2sitl-simulator-software-in-the-loopusing-using-the-crrcsim-simulator>
-    Using X-Plane 10 with SITL <sitl-with-xplane>
-    Soaring SITL with X-Plane <soaring-sitl-with-xplane>
-    Soaring SITL with Silent Wings <soaring-sitl-with-silentwings>
+    Setting Up SITL <SITL-setup-landingpage>
+    Using SITL <using-sitl-for-ardupilot-testing>
+    Examples of using SITL by Vehicle <sitl-examples>

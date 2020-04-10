@@ -13,22 +13,20 @@ The SERVOn_FUNCTION parameters
 ------------------------------
 
 In the advanced parameter view of your GCS you will find that each
-SERVO output channel has a SERVOn_FUNCTION parameter. For example,
-SERVO5_FUNCTION controls the output function of channel 5,
-SERVO6_FUNCTION controls the output function of channel 6 and so on.
+SERVO output channel has a ``SERVOn_FUNCTION`` parameter. For example, :ref:`SERVO5_FUNCTION<SERVO5_FUNCTION>`  controls the output function of channel 5, :ref:`SERVO6_FUNCTION<SERVO6_FUNCTION>` controls the output function of channel 6 and so on.
 
 Not all the functions are available in each vehicle. Defaults are set to 0 when firmware for a vehicle type is first loaded. Choosing a frame
 configuration in Mission Planner during initial setup will set the outputs to the basic typical functions for that frame type. For example,
 fixed wing plane will set the first four outputs, SERVO1-SERVO4 to Aileron, Elevator, Throttle, and Rudder functions, respectively.
 
 All of these functions may be used on multiple channels. So if you
-want 3 elevator channels for some reason you can set SERVOn_FUNCTION
+want 3 elevator channels for some reason you can set ``SERVOn_FUNCTION``
 to 19 on 3 of your output channels.
 
 Configuration
 -------------
 
-Configuration can be done using the SERVO tab of Mission Planner or by directly setting the SERVOx_FUNCTION parameter for an output.
+Configuration can be done using the SERVO tab of Mission Planner or by directly setting the ``SERVOx_FUNCTION`` parameter for an output.
 
 .. image:: ../../../images/rcoutput-mapping.png
     :target: ../_images/rcoutput-mapping.png
@@ -88,7 +86,7 @@ Disabled
 ++++++++
 
 For normal operation, the Disabled output function sets the output value
-of the channel to the trim value (for example, if SERVO5_FUNCTION is 0 then channel 5 will
+of the channel to the trim value (for example, if :ref:`SERVO5_FUNCTION<SERVO5_FUNCTION>` is 0 then channel 5 will
 output SERVO5_TRIM). The exception to this is when a
 MAVLink override of the channel or a mission servo set is used. So in
 some ways "disabled" could be called "mission-controlled".
@@ -104,7 +102,7 @@ RCPassThru
 
 Setting a channel to RCPassThru means it will output the value that is
 coming into the board from the corresponding input channel. For example,
-if SERVO5_FUNCTION is 1 (meaning RCPassThru) then channel 5 output will
+if :ref:`SERVO5_FUNCTION<SERVO5_FUNCTION>` is 1 (meaning RCPassThru) then channel 5 output will
 always be equal to channel 5 input.
 
 .. note:: The servo output will exactly match the RC input source's PWM value. RCx_TRIM/_MIN/_MAX and SERVOx_TRIM/_MIN/_MAX has no affect in this mode.
@@ -112,7 +110,7 @@ always be equal to channel 5 input.
 RCPassThru1 to RCPassThru16
 +++++++++++++++++++++++++++
 
-This operates the same as RCPassThru explained above. However, instead of the ``SERVOx`` output being controlled by the ``RCx`` input, any RC input can be assigned to control this output. For example RCPassThru 1 (51) would assign RC Channel 1 input to control the output. So, for output 1, assigning 51 to the SERVO1_FUNCTION is identical to assigning  the value of 1 passing RC Channel 1 to the output.
+This operates the same as RCPassThru explained above. However, instead of the ``SERVOx`` output being controlled by the ``RCx`` input, any RC input can be assigned to control this output. For example RCPassThru 1 (51) would assign RC Channel 1 input to control the output. So, for output 1, assigning 51 to the :ref:`SERVO1_FUNCTION<SERVO1_FUNCTION>` is identical to assigning  the value of 1 passing RC Channel 1 to the output.
 
 PLANE FUNCTIONS (Also applies to QuadPlanes)
 --------------------------------------------
@@ -511,6 +509,13 @@ Ignition/Starter/Choke
 
 For control of an internal combustion engine's spark plug/igniter, starter motor, and choke. See :ref:`common-ice` .
 
+NEOPIXEL LED STRINGS
+--------------------
+
+Neopixel LEDs/Strings can be controlled using ``Function IDs 120-124``, thereby supporting up to four strings independtly controlled. These may be used for ArduPilot notifications and warnings (See :ref:`common-ntf-devices` ) or controlled via LUA scripting (See :ref:`common-lua-scripts`.
+This is available in all vehicles.
+
+
 MISCELLANEOUS FUNCTIONS
 -----------------------
 
@@ -535,6 +540,28 @@ Sprayer Pump/Mixer
 ++++++++++++++++++
 
 These outputs are controlling a :ref:`sprayer` .
+
+GENERAL PURPOSE LUA SCRIPTING OUTPUTS
+-------------------------------------
+
+:ref:`Lua Scripts <common-lua-scripts>` can also directly control autopilot outputs. Using ``Function IDs 94-106`` provides the ability to configure up to 16 of these outputs, if the autopilot is capable. This is available in all vehicles.
+
+INTERNAL CONTROLLER ACCESS
+--------------------------
+
++--------------------------------+-----+---------------------------------------+
+|       Function                 | ID  |        Available in:                  |
++--------------------------------+-----+---------------------------------------+
+|      RateRoll                  | 124 |     Copter                            |
++--------------------------------+-----+---------------------------------------+
+|      RatePitch                 | 125 |     Copter                            |
++--------------------------------+-----+---------------------------------------+
+|      RateThrust                | 126 |     Copter                            |
++--------------------------------+-----+---------------------------------------+
+|      RateYaw                   | 127 |     Copter                            |
++--------------------------------+-----+---------------------------------------+
+
+These outputs provide the FeedForward terms from the attitude control loops, scaled by the ATC_RAT_x_FF PID parameter values for roll/pitch/yaw for use with external vehicle controllers.
 
 DEFAULT VALUES
 --------------

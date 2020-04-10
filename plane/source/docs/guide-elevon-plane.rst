@@ -67,14 +67,14 @@ PROVIDING RC INPUT is:
 If your movements are incorrect then you need to adjust which servo
 output is left/right and the reversals of each elevon.
 
-The parameters you should adjust are SERVO1_REVERSED, SERVO2_REVERSED,
-SERVO1_FUNCTION and SERVO2_FUNCTION.
+The parameters you should adjust are :ref:`SERVO1_REVERSED<SERVO1_REVERSED>` , :ref:`SERVO2_REVERSED<SERVO2_REVERSED>` ,
+:ref:`SERVO1_FUNCTION<SERVO1_FUNCTION>` and :ref:`SERVO2_FUNCTION<SERVO2_FUNCTION>` .
 
 If your left elevon on servo 1 is moving the wrong way for both pitch and
-roll corrections, set SERVO1_REVERSED to 1.
+roll corrections, set :ref:`SERVO1_REVERSED<SERVO1_REVERSED>` to 1.
 
 If your left elevon on servo 1 responds correctly to pitch, but incorrectly
-to roll, change the SERVO1_FUNCTION.
+to roll, change the :ref:`SERVO1_FUNCTION<SERVO1_FUNCTION>` .
 
 Repeat the servo reversal or function change for the right elevon.
 
@@ -135,11 +135,11 @@ The :ref:`MIXING_GAIN<MIXING_GAIN>` parameter is critical for elevon aircraft. I
 gain used in mixing between roll and pitch input and your elevon
 movement.
 
-For example, if your MIXING_GAIN is 0.5, then the following outputs
+For example, if your :ref:`MIXING_GAIN<MIXING_GAIN>` is 0.5, then the following outputs
 are used:
 
-- LEFT_ELEVON = (roll+pitch)*0.5
-- RIGHT_ELEVON = (roll-pitch)*0.5
+- LEFT ELEVON = (roll+pitch)*0.5
+- RIGHT ELEVON = (roll-pitch)*0.5
 
 So, simultaneous full roll and  full pitch input will result in maximum travel of the elevons if mixing gain is 0.5. But if just full roll or pitch is input, maximum elevon deflection would be only 50%.  
 
@@ -154,9 +154,9 @@ If a negative value is used, the pitch input is multiplied, while the roll input
 
 The amount the stick input value is multiplied is given by:
 
-Multiplier in % = 100 + | MIXING_OFFSET |
+Multiplier in % = 100 + | :ref:`MIXING_OFFSET<MIXING_OFFSET>` |
 
-So, if MIXING_OFFSET = 100 then roll inputs will be multiplied by 2...so when the aileron stick is deflected halfway, full throw will be effectively input.CAUTION: Roll stick inputs above half will have no further effect.
+So, if :ref:`MIXING_OFFSET<MIXING_OFFSET>` = 100 then roll inputs will be multiplied by 2...so when the aileron stick is deflected halfway, full throw will be effectively input.CAUTION: Roll stick inputs above half will have no further effect.
 
 
 

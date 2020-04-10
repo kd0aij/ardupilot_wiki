@@ -141,9 +141,19 @@ Bit 1 enables attitude/throttle based gain attenuation with minimum gain (maximu
 Orientation
 ===========
 
-The AHRS_ORIENTATION, the accelerometer calibration and AHRS trim
+The :ref:`AHRS_ORIENTATION<AHRS_ORIENTATION>`, the accelerometer calibration and AHRS trim
 should all be done for fixed wing flight. Fixed wing flight is
 considered "normal" orientation for a tailsitter.
+
+Pre-Arm Issues
+==============
+
+Due to a issue in DCM related to compass fusion for yaw when pointing straight up, sometimes the AHRS subsystems will disagree when powering up, nose up. Slight errors in compass calibration, while resulting in a successful calibration, may worsen this effect.
+
+The result is that some setups will give a pre-arm failure. Typically it is "Pre-Arm:DCM roll/pitch inconsistent by "x" degrees" or similar. If this happens consistently, then one of two solutions can be used:
+
+- Power up horizontally, and allow the autopilot to begin initialization in this position. After the IMUs tilt initialization is completed (usually in the first ten to fifteen seconds or so), the Tailsitter can be set vertically for the remainder of the initialization (ie after GPS lock and EKF is using the GPS) and then armed.
+- Or, if you get the Pre-Arm failure above, lay the Tailsitter down horizontally for 10-30 seconds to allow the various AHRS subsystems to synchronize. After that it can be raised and arming should proceed normally.
 
 Transitions
 ===========
@@ -198,7 +208,7 @@ control to vectored thrust in forward flight. This control is combined
 with control from your elevon mixing gain (controlled by :ref:`MIXING_GAIN<MIXING_GAIN>`).
 
 By adjusting the relative values of :ref:`Q_TAILSIT_VHGAIN<Q_TAILSIT_VHGAIN>`, :ref:`Q_TAILSIT_VFGAIN<Q_TAILSIT_VFGAIN>`
-and MIXING_GAIN you can adjust how much control you have from elevons
+and :ref:`MIXING_GAIN<MIXING_GAIN>` you can adjust how much control you have from elevons
 and thrust vectoring in each flight mode.
 
 .. youtube:: s2KLOAdS_HY

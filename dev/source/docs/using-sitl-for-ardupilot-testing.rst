@@ -1,8 +1,8 @@
 .. _using-sitl-for-ardupilot-testing:
 
-=====================
-SITL Advanced Testing
-=====================
+==========
+Using SITL
+==========
 
 This article describes how :ref:`SITL <sitl-simulator-software-in-the-loop>`
 and :ref:`MAVProxy <mavproxy-developer-gcs>` can be used to change the environment,
@@ -24,6 +24,11 @@ It also explains how to :ref:`connect to different GCSs <using-sitl-for-ardupilo
    describe a GCS-specific UI layout). Many of these operations can also
    be performed in *Mission Planner* (through the *Full Parameters List*) or any other GCS.
 
+..  youtube:: Ewh0fKGEJL4
+    :width: 100%
+
+
+
 Selecting a vehicle/frame type
 ==============================
 
@@ -39,6 +44,51 @@ The frame type can also be changed with the ``-f`` parameter.
 
     sim_vehicle.py -v ArduPlane -f quadplane --console --map
     
+
+Frame Types:
+------------
+
+A partial listing of frame types is show below. For a current list, just type:
+
+::
+
+    sim_vehicle.py --help
+
+
++--------------------------+------------------------+
++          Vehicle         +       Frame Type       +
++--------------------------+------------------------+
++                          + plane (default if -f   +
++                          + is not used)           +
++                          +------------------------+
++ Plane                    + quadplane              +
++                          + firefly plane-dspoilers+
++                          + plane-elevon plane-jet +
++                          + plane-tailsitter plane-+
++                          + vtail quadplane-cl84   +
++                          + quadplane-tilthvec     +
++                          + quadplane-tilttri      +
++                          + quadplane-tilttrivec   +
++                          + quadplane-tri          +
++--------------------------+------------------------+
++                          + quad (default if -f    +
++                          + is not used)           +
++                          +------------------------+
++                          + coaxcopter  dodeca-hexa+
++ Copter                   + heli heli-compound     +
++                          + heli-dual hexa hexa-cwx+
++                          + hexa-dji octa octa-cwx +
++                          + octa-dji octa-quad     +
++                          + octaquad-cwx  tri  cwx +
++                          + singlecopter  y6 djix  +
++--------------------------+------------------------+
++                          + rover (default if -f   +
++  Rover                   + is not used)           +
++                          +------------------------+
++                          + balancebot rover-skid  +
++                          + sailboat sailboat-motor+
++--------------------------+------------------------+
+
 
 Setting vehicle start location
 ==============================
@@ -60,11 +110,25 @@ For example, to start Copter in *Ballarat* (a named location in
 .. note::
 
    You can add your own locations to the file. The order is Lat,Lng,Alt,Heading where alt is MSL and in meters, and heading is degrees.
-   If you need to use a
-   location regularly then consider adding it to the project via a pull
-   request.
+   If the flying location is well-used then consider adding it to the project via a pull request.
 
-   
+.. note::
+
+   You can add your own private locations to a local locations.txt
+   file, in the same format as the main file.  On linux the file is
+   located in ``$HOME/.config/ardupilot/locations.txt`` - you will
+   need to create this file using your favourite text editor.
+
+Simulating On-Board OSD
+=======================
+
+When starting SITL, you can have it display a simulation of the integated OSD, if the autopilot includes one. Add the ``--osd`` option when starting SITL:
+
+::
+
+    sim_vehicle.py -v ArduPlane --console --map --osd
+
+
 .. _using-sitl-for-ardupilot-testing_loading_a_parameter_set:
 
 Loading a parameter set
@@ -308,10 +372,16 @@ downloaded waypoints and rally points.
 Graphing vehicle state
 ======================
 
-*MAVProxy* allows you to create graphs of vehicle state. Numerous
-aliases have been created for useful graph types in the *MAVProxy*
-initialisation file (**mavinit.scr**). These all start with "g" and
-include ``gtrackerror``, ``gaccel`` etc.
+MAVProxy allows you to create graphs of inputs, outputs, internal variables, etc. by loading the ``graph`` module.  You can then create graphs of vehicle state using the graph command. For example, to graph the RC channel 3 input during the simulation:
+
+::
+
+    graph RC_CHANNELS.channel3_raw
+
+As with most commands, you can type ``graph`` and then double tab to see available completions. In the example above the `RC_CHANNELS` group contains the 16 rc channels, so typing ``graph RC_CHANNELS``, then double tab would show those.
+
+Since these are rather long to type, MAVProxy allows for the creation of shorter aliases.  There have been many aliases created in a file present in the ArduPilot source tree in the Tools/vagrant sub-directory called **mavinit.scr**. If this file is copied and placed in your home directory and renamed to **.mavinit.scr**, it will be used upon *MAVProxy's* initialization.  Common ones are: *g* for graph, *grc* to graph the RC inputs, *gservo8* to graph the first 8 output channels instead of typing long item names eight times, etc. Using this alias initialization file also has the advantage of automatically loading the graph module upon startup, so you will not have to load it.
+
 
 Using a joystick
 ================
@@ -321,9 +391,9 @@ be a real RC transmitter with a USB dongle for the trainer port, or
 something like the RealFlight interlink controller or a wide range of
 other joystick devices.
 
-Before you use the joystick support you need to remove a debug
+Before you use the joystick support you may need to remove debug
 statements from the python-pygame joystick driver on Linux. If you don't
-then you will see lots of debug output like this:
+then you may see lots of debug output like this:
 
 ::
 
@@ -336,7 +406,7 @@ To remove this debug line run this command:
     sudo sed -i 's/SDL_JoystickGetAxis value/\x00DL_JoystickGetAxis value/g' /usr/lib/python2.7/dist-packages/pygame/joystick.so
 
 note that this needs to be one long command line. Ignore the line
-wrapping in the wiki.
+wrapping in the wiki. If you have installed the joystick support using the instructions on setting up the ArduPilot code building environment, then this will probably NOT be required.
 
 Then to use the joystick run:
 
@@ -344,8 +414,7 @@ Then to use the joystick run:
 
     module load joystick
 
-If you want to add support for a new joystick type then you need to edit
-the `mavproxy_joystick module <https://github.com/tridge/MAVProxy/blob/master/MAVProxy/modules/mavproxy_joystick.py>`__
+If you want to add support for a new joystick type then you need to add a file for it following these `instructions <https://github.com/ArduPilot/MAVProxy/blob/master/docs/JOYSTICKS.md>`__ . Note that you can also use this information to customize the operation of your joystick if it already supported. Just modify it file appropriately.
 
 Using real serial devices
 =========================

@@ -4,6 +4,12 @@
 RadioLink MiniPix
 ========================================
 
+
+.. warning:: This autopilot is not recommended because the board is not compatible with the official ArduPilot software despite multiple efforts to work with the manufacturer to make it compatible. The manufacturer is also apparently not abiding by the GPLv3 license which requires releasing the modified source code to its customers. The information provided below is now outdated and current Ardupilot releases will not function on this flight controller.
+
+
+
+
 .. image:: ../../../images/minipix1.jpg
     :target: ../_images/minipix1.jpg
 
@@ -75,5 +81,5 @@ Then follow the instructions on how to :ref:`load firmare onto ChibiOS boards <c
     firmware's SERIALn assignments, this requires additional attention!
     
 .. note::
-    MiniPix voltage and current sensing pins use Pixhawk standard (VOLT_PIN = 2, CURR_PIN = 3).
+    MiniPix voltage and current sensing pins use Pixhawk standard ( :ref:`BATT_VOLT_PIN<BATT_VOLT_PIN>` = 2, :ref:`BATT_CURR_PIN<BATT_CURR_PIN>` = 3).
     The additional ADC pin can be used for either RSSI or analog airspeed. Set required option to PIN = 11.

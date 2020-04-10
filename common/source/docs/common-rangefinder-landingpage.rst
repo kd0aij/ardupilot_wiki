@@ -22,7 +22,7 @@ Copter/Plane/Rover support a number of different rangefinders including Lidars (
 
    Downward facing rangefinders are automatically used in flight modes which have height control, such
    as Altitude Hold, Loiter and PosHold Mode.  The data from the sensor
-   will be used until you exceed RNGFND_MAX_CM, after that it switches to
+   will be used until you exceed ``RNGFNDx_MAX_CM``, after that it switches to
    the barometer.
 
    Copter-3.4 (and higher) includes support for :ref:`Terrain Following <terrain-following>` in Auto mode.
@@ -33,7 +33,7 @@ Copter/Plane/Rover support a number of different rangefinders including Lidars (
    
 .. warning::
    
-   RNGFND_MAX_CM must be set to a tested, appropriate value.  If RNGFND_MAX_CM is set to a value
+   ``RNGFNDx_MAX_CM`` must be set to a tested, appropriate value.  If ``RNGFNDx_MAX_CM`` is set to a value
    greater than the range of the sensor, the autopilot will not respond correctly to the 
    data provided.
 
@@ -49,16 +49,15 @@ based upon your set-up.
 
     Rangefinder Setup Overview <common-rangefinder-setup>
 
-[site wiki="rover"]
-    Sonar Sensors <sonar-sensors>
-[/site]
+
 
     Aerotenna US-D1 Radar Altimeter <common-aerotenna-usd1>
     Attollo Engineering Wasp200 <common-wasp200-lidar>
     Benewake TF02 / TF03 <common-benewake-tf02-lidar>
     Benewake TFmini / TFmini Plus <common-benewake-tfmini-lidar>
     Garman Lidar-Lite <common-rangefinder-lidarlite>
-    Leddar One Lidar <common-leddar-one-lidar>
+    LeddarTech Leddar One <common-leddar-one-lidar>
+    LeddarTech LeddarVu8 <common-leddartech-leddarvu8-lidar>
     LightWare SF20 / LW20 Lidar <common-lightware-lw20-lidar>
     LightWare SF10 / SF11 Lidar <common-lightware-sf10-lidar>
     Lightware SF02 Lidar <common-rangefinder-sf02>

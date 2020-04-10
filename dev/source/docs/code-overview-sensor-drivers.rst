@@ -91,11 +91,11 @@ Vehicle Code and Front-End Example
 The example below shows how the Copter vehicle code pulls data from range finder (aka sonar, lidar) drivers.
 The Copter code's `scheduler <https://github.com/ArduPilot/ardupilot/blob/master/ArduCopter/Copter.cpp#L107>`__ calls the vehicle's read_rangefinder() method at 20Hz.
 Below is a picture of this method, the latest version can be seen in the `sensors.cpp <https://github.com/ArduPilot/ardupilot/blob/master/ArduCopter/sensors.cpp>`__ file.
-The rangefinder.update() and rangefinder.distance_cm() methods are calls into the driver's front-end.
+The rangefinder.update() method is a call into the driver's front-end.
 
 .. image:: ../images/code-overview-sensor-driver1.png
 
-Below is the range finder driver's front-end `update method <https://github.com/ArduPilot/ardupilot/blob/master/libraries/AP_RangeFinder/RangeFinder.cpp#L547>`__.
+Below is the range finder driver's front-end `update method <https://github.com/ArduPilot/ardupilot/blob/master/libraries/AP_RangeFinder/AP_RangeFinder.cpp#L289>`__.
 This gives the driver a chance to do any general processing it might want to within the main thread.
 Each back-end's update method is called in turn.
 
@@ -109,7 +109,7 @@ As described on the `user wiki <https://ardupilot.org/copter/docs/common-lightwa
 
 .. image:: ../images/code-overview-sensor-driver-uart1.png
 
-Within the LightWare serial driver's startup code, it first finds which UART the user would like to use via the serial_manager class which looks for the parameters settings described above.
+Within the serial driver's `backend code <https://github.com/ArduPilot/ardupilot/blob/master/libraries/AP_RangeFinder/AP_RangeFinder_Backend_Serial.cpp>`__, it first finds which UART the user would like to use via the serial_manager class which looks for the parameters settings described above.
 
 .. image:: ../images/code-overview-sensor-driver8.png
 

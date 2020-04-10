@@ -105,7 +105,7 @@ Complex Invocation
 
 ::
 
-   ./Tools/autotest/autotest.py --no-clean build.ArduCopter fly.ArduCopter build.APmrover2 drive.APmrover2 drive.balancebot build.ArduPlane fly.ArduPlane fly.Quadplane build.AntennaTracker build.ArduSub dive.ArduSub build.Helicopter fly.CopterAVC build.AntennaTracker test.AntennaTracker
+   ./Tools/autotest/autotest.py --no-clean build.ArduCopter fly.ArduCopter build.APMrover2 drive.APMrover2 drive.balancebot build.ArduPlane fly.ArduPlane fly.Quadplane build.AntennaTracker build.ArduSub dive.ArduSub build.Helicopter fly.CopterAVC build.AntennaTracker test.AntennaTracker
 
 At time of writing, these invoke all the vehicle tests.  Expect these to take about 40 minutes to run.
 
@@ -129,6 +129,12 @@ AutoTest can run the ArduPilot binary under gdb:
    ./Tools/autotest/autotest.py --no-clean --gdb --debug build.ArduCopter fly.ArduCopter
 
 In an X Windowing System environment, an xterm window will contain the GDB terminal; stderr from the ArduPilot binary will also appear in this window.  Where X is not available but `GNU screen <https://www.gnu.org/software/screen/>`__ is, a detached screen will be created with the same content.
+
+You can insert a Python method call into your test to cause the autopilot to enter the attached debugger:
+
+::
+
+   self.send_debug_trap()
 
 Using with Valgrind
 ...................

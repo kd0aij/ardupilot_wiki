@@ -11,6 +11,8 @@ These setup instructions describe how to setup `Cygwin <http://www.cygwin.com/>`
 
       There is a pre-built script at `/ardupilot/Tools/environment_install/install-prereqs-windows.ps1 <https://github.com/ArduPilot/ardupilot/tree/master/Tools/environment_install/install-prereqs-windows.ps1>`__ that will automatically perform all of the below steps.
 
+
+
 Install Cygwin
 --------------
 
@@ -20,7 +22,7 @@ Install Cygwin
 
 ::
 
-    setup-x86_64.exe -P autoconf,automake,ccache,gcc-g++,git,libtool,make,gawk,libexpat-devel,libxml2-devel,python27,python2-future,python27-libxml2,python27-pip,libxslt-devel,python27-devel,procps-ng,zip,gdb,ddd
+    setup-x86_64.exe -P autoconf,automake,ccache,gcc-g++,git,libtool,make,gawk,libexpat-devel,libxml2-devel,python27,python27-future,python27-libxml2,python27-pip,libxslt-devel,python27-devel,procps-ng,zip,gdb,ddd
     
 Or, for a stepped install:
 
@@ -67,7 +69,7 @@ Or, for a stepped install:
    +-----------------+----------------------------------------------------------------------------------+
    | python27-devel  | Python \| python27-devel: Python2 language interpreter                           |
    +-----------------+----------------------------------------------------------------------------------+
-   | python2-future  | Python \| python2-future: Clean single-source support for Python 3 and 2         |
+   | python27-future | Python \| python27-future: Clean single-source support for Python 3 and 2        |
    +-----------------+----------------------------------------------------------------------------------+
    | python27-libxml2| Python \| python27-libxml2: Gnome XML Library (Python bindings)                  |
    +-----------------+----------------------------------------------------------------------------------+

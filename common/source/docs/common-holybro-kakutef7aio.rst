@@ -99,13 +99,13 @@ FrSky Telemetry
  
 FrSky Telemetry is supported using the T6 pin (UART6 transmit). You need to set the following parameters to enable support for FrSky S.PORT
  
-  - SERIAL6_PROTOCOL 10
-  - SERIAL6_OPTIONS 7
+  - :ref:`SERIAL6_PROTOCOL<SERIAL6_PROTOCOL>` 10
+  - :ref:`SERIAL6_OPTIONS<SERIAL6_OPTIONS>` 7
   
 OSD Support
 ===========
 
-The KakuteF7 AIO supports OSD using OSD_TYPE 1 (MAX7456 driver).
+The KakuteF7 AIO supports OSD using :ref:`OSD_TYPE<OSD_TYPE>` 1 (MAX7456 driver).
 
 PWM Output
 ==========
@@ -131,11 +131,11 @@ LiPo batteries.
 
 The correct battery setting parameters are:
 
- - BATT_MONITOR 4
- - BATT_VOLT_PIN 13
- - BATT_CURR_PIN 12
- - BATT_VOLT_MULT 10.1
- - BATT_AMP_PERVLT 17.0
+ - :ref:`BATT_MONITOR<BATT_MONITOR>` 4
+ - :ref:`BATT_VOLT_PIN<BATT_VOLT_PIN>` 13
+ - :ref:`BATT_CURR_PIN<BATT_CURR_PIN>` 12
+ - :ref:`BATT_VOLT_MULT<BATT_VOLT_MULT>` 10.1
+ - :ref:`BATT_AMP_PERVLT<BATT_AMP_PERVLT>` 17.0
 
 Compass
 =======

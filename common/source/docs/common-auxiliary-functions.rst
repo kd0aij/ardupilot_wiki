@@ -172,6 +172,8 @@ Supported Features
 +----------------------+----------------------------+----------+---------+---------+
 |        207           | Mainsail (Sailboat)        |          |         |    X    |
 +----------------------+----------------------------+----------+---------+---------+
+|        208           | Flaps                      |          |    X    |         |
++----------------------+----------------------------+----------+---------+---------+
 
 
 Description of Features
@@ -182,7 +184,11 @@ Description of Features
 Mode Switches
 -------------
 
-Any feature ending with "mode" provides the ability to switch the vehicle into that mode by setting the RC channel to high. Lowering it back to low, will return the flight mode to whatever is set on the flight mode channel.
+Any feature ending with "mode" provides the ability to switch the vehicle into that mode by setting the RC channel to high. You can have multiple "mode" option switches and more than one can be high at a time. The last "mode" change switch will determine the current mode, as well as any change of the normal mode switch.
+
+For example, if you have a "LOITER mode" switch active and then an "AUTO mode" switch is switched high, the mode will change to AUTO. Changing the normal flight mode switch will again change the mode to the new flight mode setting, even though both RCx_OPTION mode switches are high. Lowering an active RCx_OPTION mode switch back to low, will return the flight mode to whatever is set on the flight mode channel, but only if the current mode matches the mode set by that switch. Otherwise, it will have no effect.
+
+.. note:: Copter and Rover mode changes are not guaranteed. They may be denied if the conditions required for that mode are not met. For example, changing to LOITER mode in Copter would fail if GPS lock is not active, whereas Plane will always change to the demanded mode and operate as best as it can.
 
 .. note:: If mapped to a three-position switch then the SUPERSIMPLE mode function will allow **SUPERSIMPLE** and **SIMPLE** modes to be enabled using the high and middle switch positions, respectively (a two-position switch will enable/disable SUPERSIMPLE mode only). :ref:`See here for more details<simpleandsuper-simple-modes>` .
 
@@ -391,8 +397,7 @@ Stops motors immediately
    <td><strong>Motor Interlock</strong></td>
    <td>
 
-Opposite of Emergency stop (above) in that switch must be ON for motors
-to spin (`video <https://youtu.be/-Db4u8LJE5w?t=51>`__).
+Motor Interlock controls the way the heliRSC (motor throttle control) output is generated in Traditional Helicopters and HeliQuads. If > 1200us, it enables the Motor Interlock function, below its is disabled. When <1200us, it is similar to what is sometimes referred to as Throttle Hold in RC Helicopter terminology for Traditional Helicopters and HeliQuads. For Mulit-copters, it is used as a motor stop function when <1200us. (`video <https://youtu.be/-Db4u8LJE5w?t=51>`__).
 
 .. raw:: html
 
@@ -627,6 +632,16 @@ This puts the autopilot control loops into a soft standby mode so that a paralle
 
 This RC channel will drive the output of the MainSail output ( ``SERVOx_FUNCTION`` = 89) instead of being 
 set from the Throttle Input channel (useful if it has an auxiliary motor using that input). See Sailboat :ref:`sailboat-configure` for more information about the main sail setup.
+
+.. raw:: html
+
+   </td>
+   </tr>
+   <tr>
+   <td><strong>Flaps</strong></td>
+   <td>
+
+This RC channel provides manual control the amount of FLAP deflection and can also be used in conjunction with :ref:`automatic-flaps` and/or :ref:`flaperons<flaperons-on-plane>` . (Replaces the old FLAP_IN_CHANNEL parameter)
 
 .. raw:: html
 

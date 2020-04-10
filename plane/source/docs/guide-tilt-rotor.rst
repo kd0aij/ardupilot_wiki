@@ -201,6 +201,8 @@ ArduPilot tilt-rotor code:
 - once a forward transition is completed then the motors will cover
   any remaining angle at 90 degrees per second.
 
+.. note:: For Binary type tilt servos these rates should be set at the actual measured rate of the servo since its independent of ArudPilot control.
+
 Vectored Yaw
 ============
 
@@ -226,16 +228,29 @@ Non-Vectored Yaw
 
 Non-Vectored yaw aircraft (:ref:`Q_TILT_TYPE<Q_TILT_TYPE>` = 0 or 1) needs a tilt servo for yaw control.
 
-You need to setup your front tilt servos with ``SERVOn_FUNCTION=41``
-and also your servo for yaw control with ``SERVOn_FUNCTION=39``. ``SERVO_FUNCTION=39`` is normally the servo function for motor 7, but in a non-vectored yaw tri-copter, the yaw servo is controlled via ``SERVOn_FUNCTION 39``.
+You need to setup your front tilt servos with ``SERVOn_FUNCTION=41`` and also your servo for yaw control with ``SERVOn_FUNCTION=39``, if the frame is a Tricopter. You should set up the yaw servo’s maximum lean angle in degrees with :ref:`Q_M_YAW_SV_ANGLE<Q_M_YAW_SV_ANGLE>`. This lean angle assumes that ``SERVOn_MIN`` and ``SERVOn_MAX``, represent +/- 90 degrees, with ``SERVOn_TRIM`` representing 0 degrees lean.
+
+Note:
+``SERVO_FUNCTION=39`` is normally the output function for motor 7, but in a non-vectored yaw tilt-rotor Tricopter, the yaw servo is controlled via ``SERVOn_FUNCTION`` = 39.
 
 If you wish to setup BLEHeli esc telemetry, you need to set :ref:`Q_M_PWM_TYPE<Q_M_PWM_TYPE>` to 4 (DShot 150), connect the telemetry signal to a SERIAL port, and set its ``SERIALn_PROTOCOL`` to 23.
 
-Note that if you want to use BLHeli passthru setup or telemetry in a non-vectored yaw tricopter,
+Note that if you want to use BLHeli passthru setup or telemetry in a non-vectored yaw Tricopter,
 you must not set :ref:`SERVO_BLH_AUTO<SERVO_BLH_AUTO>` to 1. Instead, set :ref:`SERVO_BLH_MASK<SERVO_BLH_MASK>` to the output-bitmask
 of the servo-channels actually connected BLHELI-ESCs.
 
 For example if your motors are connected to servo 9,10,11 (the first three aux-outputs of a pixhawk1), set :ref:`SERVO_BLH_MASK<SERVO_BLH_MASK>` to 1792.
+
+
+Tilt Rotor Movement Setup
+=========================
+
+.. toctree::
+    :maxdepth: 1
+
+    Tilt Rotor Setup <tilt-rotor-tips>
+
+
 
 Pre Flight Checks
 =================

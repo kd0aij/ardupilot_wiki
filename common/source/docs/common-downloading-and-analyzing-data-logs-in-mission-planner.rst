@@ -125,6 +125,9 @@ The :ref:`LOG_BITMASK <LOG_BITMASK>` parameter controls what messages are record
 Message Details (Copter specific)
 =================================
 
+.. note:: Many messages are detailed in the :ref:`logmessages` page in each vehicle's wiki section.
+
+
 **ATT (attitude information):**
 
 +-----------+--------------------------------------------------------------------------------------------------------+
@@ -751,7 +754,7 @@ but the most common are:
 | FIELD      | DESCRIPTION                                                                                        |
 +------------+----------------------------------------------------------------------------------------------------+
 | NLon       | Number of long running main loops (i.e. loops that take more than 20% longer                       |
-|            | than they should according to SCHED_LOOP_RATE - ex. 3ms for 400Hz rate)                            |
+|            | than they should according to :ref:`SCHED_LOOP_RATE<SCHED_LOOP_RATE>` - ex. 3ms for 400Hz rate)    |
 +------------+----------------------------------------------------------------------------------------------------+
 | NLoop      | The total number of loops since the last PM message was displayed. This allows you to calculate    |
 |            | the percentage of slow running loops (which should never be higher than 15%). Note that the        |

@@ -43,10 +43,6 @@ the menu:
 -  Mission Planner can give you audio speech alerts for events that you
    choose, such as hitting waypoints or low battery. Just go to
    **Configuration \| Planner \| Speech \| Enable Speech**
--  Mission Planner source code can be downloaded and compiled (built) by
-   those with programming skills in C# and who are familiar with
-   Microsoft Visual Studio - see :ref:`Building Mission Planner with Visual Studio <dev:buildin-mission-planner>`
-   (Dev Wiki).
 -  Mission Planner can be scripted - see :ref:`Using Python Scripts in Mission Planner <using-python-scripts-in-mission-planner>`
    (planner wiki)
 
@@ -58,3 +54,4 @@ the menu:
     Geotagging Images with Mission Planner <common-geotagging-images-with-mission-planner>
     Using Python Scripts in Mission Planner <using-python-scripts-in-mission-planner>
     Swarming <swarming>
+    Advanced Tools <common-mp-tools>

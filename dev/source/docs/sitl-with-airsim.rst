@@ -7,15 +7,15 @@ Using SITL with AirSim
 .. youtube:: -WfTr1-OBGQ
    :width: 100%
 
-`AirSim <https://github.com/microsoft/AirSim>`__ is a simulator for drones, cars and more, built on Unreal Engine (they also have an experimental Unity release, but right now it's hasn't been implemented with ArduPilot)
+`AirSim <https://github.com/microsoft/AirSim>`__ is a simulator for drones, cars and more, built on Unreal Engine (they also have experimental support for Unity, but right now it's hasn't been implemented with ArduPilot)
 
 It is open-source, cross-platform and provides excellent physically and visually realistic simulations. It has been developed to become a platform for AI research to experiment with deep learning, computer vision and reinforcement learning algorithms for autonomous vehicles.
 
-Currently, only support for ArduCopter vehicle has been developed in AirSim & ArduPilot.
+Currently, support for Copter & Rover vehicles has been developed in AirSim & ArduPilot.
 
 .. note::
 
-    This has been tested with everything in single Linux machine with Ubuntu 16.04, as well as with AirSim running in Windows 10 & ArduPilot inside WSL (Ubuntu 18.04)
+    This has been tested with everything in single Linux machine with Ubuntu 16.04, 18.04 as well as with AirSim running in Windows 10 & ArduPilot inside WSL (Ubuntu 18.04)
 
 AirSim is an excellent platform for testing and developing systems based on Computer Vision, etc. on simulated vehicles. It's a very feature-rich simulator with detailed environments and APIs (Python, C++, ROS) for collecting data. See the `main Airsim Readme <https://github.com/microsoft/AirSim#welcome-to-airsim>`__ for details and the features available.
 
@@ -37,6 +37,8 @@ A list of topics for easier navigation in the page-
 
 #. `Launch Copter SITL <https://ardupilot.org/dev/docs/sitl-with-airsim.html#launch-copter-sitl>`__
 
+#. `Launch Rover SITL <https://ardupilot.org/dev/docs/sitl-with-airsim.html#launch-rover-sitl>`__
+
 #. `Using Lidar <https://ardupilot.org/dev/docs/sitl-with-airsim.html#using-lidar>`__
 
 #. `Manual Flying using RC <https://ardupilot.org/dev/docs/sitl-with-airsim.html#manual-flying-using-rc>`__
@@ -55,10 +57,10 @@ A list of topics for easier navigation in the page-
 Installing AirSim
 =================
 
-`Binaries <https://microsoft.github.io/AirSim/docs/use_precompiled/>`__ are available for AirSim, **but since this is a very recent development, you'll have to build it yourself (on Windows as well as Linux).**
+`Binaries <https://github.com/microsoft/AirSim/releases>`__ are available for AirSim for Windows and Linux platforms, ``v1.3.0`` and later have support for Copter and Rover included. Binaries are a quick and easy way to test out the features without installing Unreal Engine, etc. Just download the precompiled environments and run to get started immediately. Many different types of environments are available, some notable ones include LandscapeMountains, City and Neighbourhood.
 
-Using the precompiled environments won't work, only environments whose source code is available such as Blocks or any other environments which you download from the Unreal Marketplace will work.
-Using the precompiled environemnts will be possible once AirSim has it's next stable release.
+For development and testing out new features, you'll have to build AirSim from source. The setup instructions for building from source are described below.
+
 
 Build on Windows
 ----------------
@@ -111,11 +113,11 @@ For using another environment, check the information at the end of the page.
 Using AirSim with ArduPilot
 ---------------------------
 
-Make sure that you have setup ArduPilot SITL, completed the Unreal Environment setup and verified that both are working individually before proceeding.
+Make sure that you have setup ArduPilot SITL, completed the Unreal Environment setup or have the binaries downloaded and verified that both are working individually before proceeding.
 
 .. note::
 
-    Go to ``Edit->Editor Preferences``, in the ``Search`` box type ``CPU`` and ensure that the ``Use Less CPU when in Background`` is unchecked.
+    Running in UE Editor: Go to ``Edit->Editor Preferences``, in the ``Search`` box type ``CPU`` and ensure that the ``Use Less CPU when in Background`` is unchecked.
 
 
 `AirSim's settings.json file <https://github.com/microsoft/AirSim/blob/master/docs/settings.md>`__ specifies the vehicle and it's various properties. See the page for the options available.
@@ -133,7 +135,6 @@ For using ArduCopter, the settings are as follows-
 
     {
       "SettingsVersion": 1.2,
-      "LocalHostIp": "127.0.0.1",
       "LogMessagesVisible": true,
       "SimMode": "Multirotor",
       "OriginGeopoint": {
@@ -145,13 +146,17 @@ For using ArduCopter, the settings are as follows-
         "Copter": {
           "VehicleType": "ArduCopter",
           "UseSerial": false,
-          "DefaultVehicleState": "Disarmed",
+          "LocalHostIp": "127.0.0.1",
           "UdpIp": "127.0.0.1",
           "UdpPort": 9003,
-          "SitlPort": 9002
+          "ControlPort": 9002
         }
       }
     }
+
+.. note::
+
+    Earlier, ``SitlPort`` was used in place of ``ControlPort`` in the settings. This change is applicable in the latest AirSim master. The update is backwards-compatible so even if you're using ``SitlPort``, it'll work.
 
 First launch AirSim, after that launch the ArduPilot SITL using
 
@@ -168,6 +173,54 @@ If ArduPilot is closed first, then UE hangs and you'll need to force close it.
 
 You can restart by just pressing the Play button and then start the ArduPilot side, no need to close the Editor completely and then start it again.
 
+Launch Rover SITL
++++++++++++++++++
+
+``settings.json`` for using ArduRover-
+
+::
+
+    {
+      "SettingsVersion": 1.2,
+      "SimMode": "Car",
+      "OriginGeopoint": {
+        "Latitude": -35.363261,
+        "Longitude": 149.165230,
+        "Altitude": 583
+      },
+      "Vehicles": {
+        "Rover": {
+          "VehicleType": "ArduRover",
+          "UseSerial": false,
+          "LocalHostIp": "127.0.0.1",
+          "UdpIp": "127.0.0.1",
+          "UdpPort": 9003,
+          "ControlPort": 9002,
+          "AutoCreate": true,
+          "Sensors": {
+            "Imu": {
+              "SensorType": 2,
+              "Enabled": true
+            },
+            "Gps": {
+              "SensorType": 3,
+              "Enabled": true
+            }
+          }
+        }
+      }
+    }
+
+First launch AirSim, after that launch the ArduPilot SITL using
+
+::
+
+    sim_vehicle.py -v APMrover2 -f airsim-rover --console --map
+
+The other features, etc. described in this page have settings, commands and files specific for Copter, but can be used for Rover as well. Certain files such as scripts and ``settings.json`` will need to be modified for Rover, seperate settings for Rover have not been added so as to keep the page managable and navigatable.
+
+You might need to tune the vehicle for proper usage, the param files for AirSim vehicles in `Tools/autotest/default_params <https://github.com/ArduPilot/ardupilot/tree/master/Tools/autotest/default_params>`__ can be modified directly, or you can create a new param file and pass it's location to SITL using ``--add-param-file`` option in ``sim_vehicle.py``.
+
 Using Lidar
 ^^^^^^^^^^^
 
@@ -179,7 +232,6 @@ Current `settings.json` file for launching ArduCopter with Lidar
 
     {
       "SettingsVersion": 1.2,
-      "LocalHostIp": "127.0.0.1",
       "SimMode": "Multirotor",
       "OriginGeopoint": {
         "Latitude": -35.363261,
@@ -190,10 +242,10 @@ Current `settings.json` file for launching ArduCopter with Lidar
         "Copter": {
           "VehicleType": "ArduCopter",
           "UseSerial": false,
-          "DefaultVehicleState": "Disarmed",
+          "LocalHostIp": "127.0.0.1",
           "UdpIp": "127.0.0.1",
           "UdpPort": 9003,
-          "SitlPort": 9002,
+          "ControlPort": 9002,
           "AutoCreate": true,
           "Sensors": {
             "Imu": {
@@ -227,7 +279,9 @@ Launch Copter with Lidar using
 
 ::
 
-    sim_vehicle.py -v ArduCopter -f airsim-copter --add-param-file=libraries/SITL/examples/Airsim/quadX_lidar.parm --console --map
+    sim_vehicle.py -v ArduCopter -f airsim-copter --add-param-file=libraries/SITL/examples/Airsim/lidar.parm --console --map
+
+By default, :ref:`BendyRuler Object Avoidance <copter:common-oa-bendyruler>` is used with the Lidar, the related parameters can be seen on the Wiki page and should be modified as required in the ``lidar.parm`` file.
 
 Manual Flying using RC
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -251,7 +305,6 @@ For simulating 2 copters, an example script has been added which will create 2 c
 
     {
       "SettingsVersion": 1.2,
-      "LocalHostIp": "127.0.0.1",
       "SimMode": "Multirotor",
       "OriginGeopoint": {
         "Latitude": -35.363261,
@@ -262,18 +315,18 @@ For simulating 2 copters, an example script has been added which will create 2 c
         "Copter1": {
           "VehicleType": "ArduCopter",
           "UseSerial": false,
-          "DefaultVehicleState": "Disarmed",
+          "LocalHostIp": "127.0.0.1",
           "UdpIp": "127.0.0.1",
           "UdpPort": 9003,
-          "SitlPort": 9002
+          "ControlPort": 9002
         },
         "Copter2": {
           "VehicleType": "ArduCopter",
           "UseSerial": false,
-          "DefaultVehicleState": "Disarmed",
+          "LocalHostIp": "127.0.0.1",
           "UdpIp": "127.0.0.1",
           "UdpPort": 9013,
-          "SitlPort": 9012,
+          "ControlPort": 9012,
           "X": 0, "Y": 3, "Z": 0
         }
       }
@@ -370,15 +423,23 @@ A ROS wrapper has also been added. See `airsim_ros_pkgs <https://github.com/micr
 Run on different machines
 +++++++++++++++++++++++++
 
-#. Change ``UdpIp`` in the ``settings.json`` file to the IP address of the machine running ArduPilot
+#. Change the following in the ``settings.json`` file-
 
-#. Use ``-A`` option to pass the next arguments to the SITL instance, followed by ``--sim-address`` to specify Airsim's IP address
+    #. ``UdpIp`` to the IP address of the machine running ArduPilot (Can be found using ``ipconfig`` on Windows, ``ifconfig`` on Linux.)
+    #. ``LocalHostIp`` to the IP address of the current machine which is running AirSim, specific to the network adapter being used such as Ethernet or WiFi. Can be set to ``0.0.0.0`` to receive messages on all networks
+
+
+#. Use ``-A`` argument in ``sim_vehicle.py`` (passes the arguments following it to the SITL instance), followed by ``--sim-address`` to specify Airsim's IP address
 
 An example-
 
 ::
 
-    sim_vehicle.py -v ArduCopter -f airsim-copter --add-param-file=libraries/SITL/examples/Airsim/quadX.parm --console --map -A --sim-address=127.0.0.1
+    sim_vehicle.py -v ArduCopter -f airsim-copter --console --map -A --sim-address=127.0.0.1
+
+.. note::
+
+    If using Windows, you might need to disable Windows Firewall to receive messages
 
 
 Using different ports
@@ -386,12 +447,16 @@ Using different ports
 
 ``UdpPort`` denotes the port no. which ArduPilot receives the sensor data on (i.e. the port that Airsim sends the data to)
 
-``SitlPort`` assigns the motor control port on which Airsim receives the rotor control message
+``ControlPort`` assigns the motor control port on which Airsim receives the rotor control message
 
 - ``--sim-port-in`` should be equal to sensor port i.e. port specified in ``UdpPort``
-- ``--sim-port-out`` should be equal to motor control port i.e. port specified in ``SitlPort``
+- ``--sim-port-out`` should be equal to motor control port i.e. port specified in ``ControlPort``
 
-Similar to changing the IP address as mentioned above, use ``-A`` to pass the arguments to the SITL instance.
+Similar to changing the IP address as mentioned above, use ``-A`` to pass the arguments to the SITL instance. Example-
+
+::
+
+    sim_vehicle.py -v ArduCopter -f airsim-copter --console --map -A "--sim-port-in=9003 --sim-port-out=9002"
 
 Development Workflow
 ++++++++++++++++++++
